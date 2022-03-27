@@ -1,0 +1,156 @@
+@font-face {
+    font-family: "Coolvetica";
+    src: url("coolvetica\ rg.otf");
+}
+
+@font-face {
+    font-family: "Altona";
+    src: url("AltonaSans-Regular.ttf");
+}
+
+:root {
+    /* Text on left */
+    --white: #E4E7ED;
+    /* Text on messages */
+    --black: #000000;
+
+    --red: #C93522;
+    --red-light: #C96D60;
+    --time: rgba(255, 255, 255, 0.65);
+
+    --background-color: #3E4053;
+    --test2: #8093f1;
+    --test2-light: #25273A;
+    --message-background: #2D2F47;
+    --message-sent-background: #4C5079;
+    --test2: #1D1E2D;
+    --border: #0C1D6E;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Altona';
+    background-image: linear-gradient(to right bottom, #992415, #841436, #601d45, #392241, #1d1e2d);
+    /* background-image: linear-gradient(to right bottom, #af2d1c, #992719, #832115, #6e1c11, #5a160d); */
+    color: var(--white);
+}
+
+.flex-container {
+    width: 100%;
+    height: 90vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 550px;
+    height: 550px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    background-color: var(--test2);
+    border-radius: 15px;
+
+    box-shadow: 4px 4px 55px 12px #1D1E2D;
+}
+
+p {
+    font-size: 25px;
+    margin-bottom: 8px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Coolvetica';
+    font-weight: 100;
+    color: var(--red);
+    font-size: 45px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+h1::after {
+    content: "";
+    width: 120%;
+    height: 3px;
+    position: absolute;
+    bottom: -4px;
+    margin: 0 auto;
+    left: -9%;
+    right: 0;
+
+    background-color: var(--red);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#username {
+    text-align: center;
+    width: 240px;
+    height: 30px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+    margin-bottom: -20px;
+}
+
+#username:focus {
+    outline: none;
+}
+
+#username::placeholder {
+    color: var(--black);
+}
+
+.joinBtn {
+    border: none;
+    border-radius: 12px;
+    color: var(--white);
+    background-color: var(--red);
+    font-size: 18px;
+    width: 120px;
+    height: 30px;
+    transition: .5s all ease;
+}
+
+.joinBtn:hover {
+    background-color: var(--red-light);
+}
+
+.container h1, form, button {
+    position: relative;
+    top: 60px;
+}
+
+
+/* ----- Responsive ----- */
+
+@media only screen and (max-width: 768px) {
+
+    html {
+        height: 100%;
+    }
+
+    .container {
+        width: 330px;
+        height: 450px;
+    }
+}

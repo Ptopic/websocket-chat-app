@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="module" src="main.js"></script>
+    <title>Chat app</title>
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+            <button class="leaveBtn"><a href="./index.html">Leave</a></button>
+            <h1>Chat app</h1>
+            <div id="rooms">
+                <div><h1>Online:</h1></div>
+                <canvas id="myChart"></canvas>
+                <div><p class="allStart">All <span id="all">0</span></p></div>
+                <div><p>Current <span id="current">0</span></p></div>
+            </div>
+
+            <div id="roomsHeader"><!-- <h2>Online mobile:</h2> -->
+                <div class="containerBars change" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+            </div>
+            <div class="rooms-mobile">
+                <canvas id="myChartMobile"></canvas>
+                <div><p class="allStart">All <span id="allMobile">0</span></p></div>
+                <div><p id="currentUsers">Current <span id="currentMobile">0</span></p></div>
+            </div>
+
+            <div id="messages">
+                <div class="msg-outline" id="msg-outline">
+                    <!-- <div class="message-sent">
+                        <p class="meta">
+                            Petar 
+                            <span>16:11</span>
+                        </p>
+                        <p>Hello</p>
+                    </div>
+
+                    <div class="message">
+                        <p class="meta">
+                            Petar 
+                            <span>16:11</span>
+                        </p>
+                        <p>Hi</p>
+                    </div> -->
+                </div>
+            </div>
+            <div id="message-form">
+                <div>
+                    <form action="">
+                        <input type="text" name="" id="msg" placeholder="Enter message" autocomplete="off">
+                        <button id="submit"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="23.000000pt" height="23.000000pt" viewBox="0 0 128.000000 128.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                           
+                           <g transform="translate(0.000000,128.000000) scale(0.100000,-0.100000)"
+                           fill="#C96D60" stroke="none">
+                           <path d="M80 1183 c-31 -11 -70 -58 -76 -90 -4 -23 8 -90 42 -223 l49 -190
+                           234 -2 c210 -3 235 -5 245 -21 8 -12 8 -22 0 -35 -10 -15 -35 -17 -245 -20
+                           l-234 -2 -49 -190 c-53 -211 -54 -239 -7 -284 61 -58 60 -58 572 154 628 260
+                           621 257 644 288 13 18 20 43 20 72 0 65 -25 93 -120 134 -366 157 -1008 416
+                           -1031 415 -16 0 -36 -3 -44 -6z"/>
+                           </g>
+                           </svg></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        const ctxMobile = document.getElementById('myChartMobile');
+
+        const labels = [
+            'Current',
+            'All'
+        ];
+
+        const data = {
+            labels,
+            datasets: [
+                {
+                    data: [1, 3],
+                    fill: true,
+                    backgroundColor: ["#C96D60", "#C93522"],
+                    borderColor: "#25273A",
+                },
+            ],
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: false,
+                title: {
+                    display: false,
+                },
+                legend: {
+                    display: false
+                },
+            }
+        }
+
+        const myChart = new Chart(ctx, config);
+        const myChartMobile = new Chart(ctxMobile, config);
+
+    function reloadChart (){
+        console.log("works");
+        chart.config.data.datasets[0].data[1] = 100;
+        chart.update();
+    }
+
+
+    // Handle stats tab opening and closing 
+
+    const navbarMobile = document.querySelector('.rooms-mobile');
+
+    function myFunction(x) {
+        navbarMobile.classList.toggle('closed');
+        x.classList.toggle("change");
+
+    }
+
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js" integrity="sha512-juaCj8zi594KHQqb92foyp87mCSriYjw3BcTHaXsAn4pEB1YWh+z+XQScMxIxzsjfM4BeVFV3Ij113lIjWiC2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="../server.js"></script>
+</body>
+</html>
