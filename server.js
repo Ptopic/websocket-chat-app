@@ -56,8 +56,8 @@ io.on('connection', (socket) => {
 })
 
 const PORT = 5500;
-const ip = '192.168.1.200';
+// const ip = '192.168.1.200';
 
-server.listen(PORT, ip, () => {
+server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
