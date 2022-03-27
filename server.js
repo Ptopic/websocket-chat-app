@@ -55,7 +55,7 @@ io.on('connection', (socket) => {
     });
 })
 
-const PORT = 5500;
+const PORT = 5000;
 // const ip = '192.168.1.200';
 
 server.listen(PORT, () => {
